@@ -66,8 +66,8 @@ type User struct {
 }
 
 var users []User
-// select * from userinfo where status=1
-err := e.Table("userinfo").Where("status", 2).Find(&users)
+// select * from user where status=1
+err := e.Table("user").Where("status", 2).Find(&users)
 if err != nil {
     fmt.Println(err.Error())
 } else {
@@ -75,8 +75,8 @@ if err != nil {
 }
 
 var user User
-// select * from userinfo where status=1
-err := e.Table("userinfo").Where("status", 2).FindOne(&user)
+// select * from user where status=1
+err := e.Table("user").Where("status", 2).FindOne(&user)
 if err != nil {
     fmt.Println(err.Error())
 } else {

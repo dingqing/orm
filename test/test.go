@@ -19,7 +19,7 @@ func BenchmarkOrmSelect(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		_ = e.Table("userinfo").Where("uid", ">=", 50).Limit(100).Find(&users)
+		_ = e.Table("user").Where("uid", ">=", 50).Limit(100).Find(&users)
 	}
 	b.StopTimer()
 }
@@ -38,7 +38,7 @@ func BenchmarkGormSelect(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		db.Table("userinfo").Where("uid >= ?", "50").Limit(50).Find(&users)
+		db.Table("user").Where("uid >= ?", "50").Limit(50).Find(&users)
 	}
 	b.StopTimer()
 }
@@ -48,7 +48,7 @@ func BenchmarkOrmUpdate(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		_, _ = e.Table("userinfo").Where("uid", "=", 15).Update("status", 0)
+		_, _ = e.Table("user").Where("uid", "=", 15).Update("status", 0)
 	}
 	b.StopTimer()
 }
@@ -59,7 +59,7 @@ func BenchmarkGormUpdate(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		db.Table("userinfo").Where("uid = ?", "15").Update("status", 1)
+		db.Table("user").Where("uid = ?", "15").Update("status", 1)
 	}
 	b.StopTimer()
 }
